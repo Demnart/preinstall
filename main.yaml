@@ -1,0 +1,6 @@
+---
+- name: preinstall Kube on servers
+  hosts: ALL
+  become: true
+  roles:
+  -  preinstall 
