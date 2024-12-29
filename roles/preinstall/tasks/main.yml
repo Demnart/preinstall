@@ -21,6 +21,18 @@
     - ipvsadm
     state: present 
 
+- name: Stop UFW unit
+  ansible.builtin.systemd_service:
+    name: ufw
+    state: stopped
+    enabled: false
+
+- name: Disable apparmor unit
+  ansible.builtin.systemd_service:
+    name: apparmor
+    state: stopped
+    enabled: false
+
 - name: Start and enable ntpd
   ansible.builtin.systemd_service:
     name: ntpd
