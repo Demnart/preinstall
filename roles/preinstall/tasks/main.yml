@@ -71,4 +71,8 @@
       value: 1
     - name: vm.max_map_count # for opensearch & elasticserarch
       value: 262144
+- name: Install containerd
+  ansible.builtin.include_tasks: containerd.yaml
 
+- name: Install Kube
+  ansible.builtin.include_tasks: kube.yaml
