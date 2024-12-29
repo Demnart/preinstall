@@ -1,0 +1,9 @@
+- name: Install crictl
+  ansible.builtin.unarchive:
+    src: "https://github.com/kubernetes-sigs/cri-tools/releases/download/v{{ crictl_version }}/{{ crictl_app }}-v{{ crictl_version }}-{{ ansible_system | lower }}-amd64.tar.gz"
+    dest: /usr/local/bin
+    owner: "{{ crictl_file_owner }}"
+    group: "{{ crictl_file_group }}"
+    extra_opts:
+      - crictl
+    remote_src: yes
