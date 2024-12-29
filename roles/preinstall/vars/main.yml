@@ -1,3 +1,8 @@
 #SPDX-License-Identifier: MIT-0
 ---
 kube_version: 1.32.0
+crictl_version: 1.32.0
+crictl_file_owner: root
+crictl_file_group: root
+crictl_app: crictl
+cri_socket: unix:///run/containerd/containerd.sock
