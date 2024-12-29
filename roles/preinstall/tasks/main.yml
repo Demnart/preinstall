@@ -83,8 +83,24 @@
       value: 1
     - name: vm.max_map_count # for opensearch & elasticserarch
       value: 262144
+
+- name: Create crictl config.yaml
+  ansible.builtin.template:
+    src: crictl.j2
+    dest: /etc/crictl.yaml
+    owner: root
+    mode: u=rw,g=r,o=r
+
 - name: Install containerd
   ansible.builtin.include_tasks: containerd.yaml
+
+- name: Change containerd sock file rights
+  ansible.builtin.file:
+    path: /var/run/containerd/containerd.sock
+    mode: u=rw,g=rw,o=rw
+
+- name: Install crictl
+  ansible.builtin.include_tasks: crictl.yaml
 
 - name: Install Kube
   ansible.builtin.include_tasks: kube.yaml
